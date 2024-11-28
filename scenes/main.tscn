@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://qi5tqvg47seb"]
+[gd_scene load_steps=3 format=3 uid="uid://qi5tqvg47seb"]
 
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_3ywxr"]
 [ext_resource type="PackedScene" uid="uid://c5nb87tcu04h2" path="res://scenes/prefabs/region.tscn" id="1_gvicn"]
 
 [node name="Node" type="Node"]
+script = ExtResource("1_3ywxr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
