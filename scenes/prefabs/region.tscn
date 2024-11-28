@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5nb87tcu04h2"]
+
+[ext_resource type="Script" path="res://scenes/prefabs/region.gd" id="1_l8j6i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxd4j"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Region" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_l8j6i")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxd4j")
+text = "Region"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Label"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="Label/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "x"
+icon_alignment = 1
+expand_icon = true
+
+[node name="AddButton" type="Button" parent="Label/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "+"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Maps" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="Label/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Label/HBoxContainer/AddButton" to="." method="_on_add_button_pressed"]

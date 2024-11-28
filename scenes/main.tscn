@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://qi5tqvg47seb"]
+
+[ext_resource type="PackedScene" uid="uid://c5nb87tcu04h2" path="res://scenes/prefabs/region.tscn" id="1_gvicn"]
+
+[node name="Node" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Thanalan" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_gvicn")]
+layout_mode = 2
+
+[node name="Grindania" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_gvicn")]
+layout_mode = 2
+
+[node name="LaNoscea" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_gvicn")]
+layout_mode = 2
+
+[node name="Other" parent="CanvasLayer/VBoxContainer" instance=ExtResource("1_gvicn")]
+layout_mode = 2
