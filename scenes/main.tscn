@@ -35,24 +35,31 @@ script = ExtResource("1_mmt5h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Regions" type="VBoxContainer" parent="CanvasLayer"]
-unique_name_in_owner = true
-anchors_preset = 15
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.948
+offset_bottom = -0.160034
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="Thanalan" parent="CanvasLayer/Regions" instance=ExtResource("1_gvicn")]
+[node name="Regions" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Thanalan" parent="CanvasLayer/ScrollContainer/Regions" instance=ExtResource("1_gvicn")]
 layout_mode = 2
 
-[node name="Grindania" parent="CanvasLayer/Regions" instance=ExtResource("1_gvicn")]
+[node name="Grindania" parent="CanvasLayer/ScrollContainer/Regions" instance=ExtResource("1_gvicn")]
 layout_mode = 2
 
-[node name="LaNoscea" parent="CanvasLayer/Regions" instance=ExtResource("1_gvicn")]
+[node name="LaNoscea" parent="CanvasLayer/ScrollContainer/Regions" instance=ExtResource("1_gvicn")]
 layout_mode = 2
 
-[node name="Other" parent="CanvasLayer/Regions" instance=ExtResource("1_gvicn")]
+[node name="Other" parent="CanvasLayer/ScrollContainer/Regions" instance=ExtResource("1_gvicn")]
 layout_mode = 2
 
 [node name="SAVEFAKE" type="HBoxContainer" parent="CanvasLayer"]
