@@ -26,6 +26,7 @@ window/size/viewport_width=540
 window/size/viewport_height=1170
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=1.2
 window/handheld/orientation=5
 
 [global_group]

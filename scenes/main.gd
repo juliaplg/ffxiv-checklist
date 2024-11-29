@@ -5,8 +5,11 @@ var dict:Dictionary
 
 const SAVE_GAME_PATH:String = "user://save.tres"
 
+@onready var regions: VBoxContainer = %Regions
+
+
 func save_game():
-	for i in $CanvasLayer/Regions.get_children():
+	for i in regions.get_children():
 		if i is Region:
 			i.save_maps()
 			dict.get_or_add(i.name, i.maps)
@@ -19,7 +22,7 @@ func save_game():
 func load_game():
 	if ResourceLoader.exists(SAVE_GAME_PATH):
 		dict = ResourceLoader.load(SAVE_GAME_PATH).dict
-	for i in $CanvasLayer/Regions.get_children():
+	for i in regions.get_children():
 		if i is Region:
 			i.load_maps()
 			if dict.has(i.name):
@@ -45,3 +48,4 @@ func _input(event: InputEvent) -> void:
 		load_game()
 	if event.is_action_pressed("clear"):
 		clear()
+		load_game()
