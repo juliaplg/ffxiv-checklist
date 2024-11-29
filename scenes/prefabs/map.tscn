@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rw5h"]
 bg_color = Color(0, 0, 0, 0.478431)
 
-[node name="Map" type="VBoxContainer"]
+[node name="Map" type="VBoxContainer" groups=["map"]]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 57.0

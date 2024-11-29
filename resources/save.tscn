@@ -1,49 +1,84 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_ioy5g"]
-[ext_resource type="PackedScene" path="res://scenes/prefabs/region.tscn" id="2_b5m4k"]
-[ext_resource type="Script" path="res://scenes/prefabs/region.gd" id="3_do4ce"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ak8wa"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/region.tscn" id="2_1ce1i"]
+[ext_resource type="Script" path="res://scenes/prefabs/region.gd" id="3_cya1n"]
 
-[node name="@Node@3" type="Node"]
-script = ExtResource("1_ioy5g")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxd4j"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Node"]
+script = ExtResource("1_ak8wa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Regions" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Thanalan" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_b5m4k")]
+[node name="Thanalan" type="VBoxContainer" parent="CanvasLayer/Regions" instance=ExtResource("2_1ce1i")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-script = ExtResource("3_do4ce")
+script = ExtResource("3_cya1n")
 
-[node name="Grindania" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_b5m4k")]
+[node name="Label" type="Label" parent="CanvasLayer/Regions/Thanalan"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-script = ExtResource("3_do4ce")
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxd4j")
+text = "Thanalan"
+vertical_alignment = 1
 
-[node name="LaNoscea" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_b5m4k")]
+[node name="Maps" type="VBoxContainer" parent="CanvasLayer/Regions/Thanalan"]
+layout_mode = 2
+
+[node name="Grindania" type="VBoxContainer" parent="CanvasLayer/Regions" instance=ExtResource("2_1ce1i")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-script = ExtResource("3_do4ce")
+script = ExtResource("3_cya1n")
 
-[node name="Other" type="VBoxContainer" parent="CanvasLayer/VBoxContainer" instance=ExtResource("2_b5m4k")]
+[node name="Label" type="Label" parent="CanvasLayer/Regions/Grindania"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-script = ExtResource("3_do4ce")
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxd4j")
+text = "Grindania"
+vertical_alignment = 1
 
-[node name="Node" type="Node" parent="."]
+[node name="Maps" type="VBoxContainer" parent="CanvasLayer/Regions/Grindania"]
+layout_mode = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Node"]
+[node name="LaNoscea" type="VBoxContainer" parent="CanvasLayer/Regions" instance=ExtResource("2_1ce1i")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("3_cya1n")
 
-[node name="Node" type="Node" parent="Node"]
+[node name="Label" type="Label" parent="CanvasLayer/Regions/LaNoscea"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxd4j")
+text = "LaNoscea"
+vertical_alignment = 1
 
-[node name="@Node@2" type="Node" parent="."]
+[node name="Maps" type="VBoxContainer" parent="CanvasLayer/Regions/LaNoscea"]
+layout_mode = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="@Node@2"]
+[node name="Other" type="VBoxContainer" parent="CanvasLayer/Regions" instance=ExtResource("2_1ce1i")]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+script = ExtResource("3_cya1n")
 
-[node name="Node" type="Node" parent="@Node@2"]
+[node name="Label" type="Label" parent="CanvasLayer/Regions/Other"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxd4j")
+text = "Other"
+vertical_alignment = 1
+
+[node name="Maps" type="VBoxContainer" parent="CanvasLayer/Regions/Other"]
+layout_mode = 2

@@ -7,7 +7,7 @@ bg_color = Color(0, 0, 0, 0.145098)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wuf2"]
 
-[node name="Item" type="HBoxContainer"]
+[node name="Item" type="HBoxContainer" groups=["item"]]
 custom_minimum_size = Vector2(0, 24)
 anchors_preset = 10
 anchor_right = 1.0
@@ -15,14 +15,14 @@ offset_bottom = 53.0
 grow_horizontal = 2
 script = ExtResource("1_5e1kn")
 
-[node name="Name" type="LineEdit" parent="."]
+[node name="ItemName" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_dih2t")
 placeholder_text = "ItemName"
 
-[node name="Coords" type="HBoxContainer" parent="Name"]
+[node name="Coords" type="HBoxContainer" parent="ItemName"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,7 +33,7 @@ size_flags_horizontal = 10
 size_flags_vertical = 0
 alignment = 2
 
-[node name="CoordX" type="LineEdit" parent="Name/Coords"]
+[node name="CoordX" type="LineEdit" parent="ItemName/Coords"]
 layout_mode = 2
 theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 24
@@ -43,7 +43,7 @@ alignment = 1
 max_length = 3
 drag_and_drop_selection_enabled = false
 
-[node name="Label" type="Label" parent="Name/Coords"]
+[node name="Label" type="Label" parent="ItemName/Coords"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 1
@@ -52,7 +52,7 @@ text = "x"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CoordY" type="LineEdit" parent="Name/Coords"]
+[node name="CoordY" type="LineEdit" parent="ItemName/Coords"]
 layout_mode = 2
 theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 24
