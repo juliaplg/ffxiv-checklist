@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 config/icon="res://resources/mugo.png"
 
+[autoload]
+
+SaveMngr="*res://scenes/globals/save_mngr.gd"
+
 [display]
 
 window/size/viewport_width=540
@@ -28,6 +32,7 @@ window/handheld/orientation=5
 
 item=""
 map=""
+main=""
 
 [gui]
 

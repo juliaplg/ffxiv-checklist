@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://qi5tqvg47seb"]
 
 [ext_resource type="PackedScene" uid="uid://c5nb87tcu04h2" path="res://scenes/prefabs/region.tscn" id="1_gvicn"]
-[ext_resource type="Script" path="res://scenes/save.gd" id="1_mmt5h"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_mmt5h"]
 
 [sub_resource type="GDScript" id="GDScript_0jfrv"]
 script/source = "extends Button
@@ -30,7 +30,7 @@ func _pressed() -> void:
 	Input.parse_input_event(cancel_event)
 "
 
-[node name="Node" type="Node"]
+[node name="Main" type="Node" groups=["main"]]
 script = ExtResource("1_mmt5h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

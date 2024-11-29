@@ -1,26 +1,47 @@
 extends Node
+class_name Main
 
-var save_path:String = "res://resources/save.tscn"
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
+var dict:Dictionary
+
+const SAVE_GAME_PATH:String = "user://save.tres"
 
 func save_game():
-	var save = PackedScene.new()
-	var items = get_tree().get_nodes_in_group("item")
-	var saved_map = PackedScene.new()
-	var map = get_tree().get_nodes_in_group("map")
-	for c in map.get_children():
-		c.set_owner(self)
+	for i in $CanvasLayer/Regions.get_children():
+		if i is Region:
+			i.save_maps()
+			dict.get_or_add(i.name, i.maps)
+			dict[i.name] = i.maps
+			var save = SaveGame.new()
+			save.dict = dict
+			ResourceSaver.save(save,SAVE_GAME_PATH)
 
-	save.pack(self)
 
-	ResourceSaver.save(save, save_path)
-	
 func load_game():
-	var saved_scene = load(save_path).instantiate()
-	add_child(saved_scene)
+	if ResourceLoader.exists(SAVE_GAME_PATH):
+		dict = ResourceLoader.load(SAVE_GAME_PATH).dict
+	for i in $CanvasLayer/Regions.get_children():
+		if i is Region:
+			i.load_maps()
+			if dict.has(i.name):
+				i.maps = dict[i.name]
+				
+
+func clear():
+	dict.clear()
+	if ResourceLoader.exists(SAVE_GAME_PATH):
+		ResourceLoader.load(SAVE_GAME_PATH).dict.clear()
+	var save = SaveGame.new()
+	ResourceSaver.save(save,SAVE_GAME_PATH)
+
+
+func _ready() -> void:
+	load_game()
+
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_page_up"):
+	if event.is_action_pressed("save"):
 		save_game()
-	if event.is_action_pressed("ui_page_down"):
+	if event.is_action_pressed("load"):
 		load_game()
+	if event.is_action_pressed("clear"):
+		clear()

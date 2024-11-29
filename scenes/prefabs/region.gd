@@ -3,7 +3,6 @@ extends VBoxContainer
 class_name Region
 
 var map_scene:PackedScene = preload("res://scenes/prefabs/map.tscn")
-var map_nodes
 var maps:Dictionary
 
 func _process(_delta: float) -> void:
@@ -38,14 +37,4 @@ func load_maps():
 				for j in map.get_node("Items").get_children():
 					if j is Item:
 						j.get_node("ItemName").text = maps[map.get_node("MapName").text][j.get_index()]
-				#for item in map.get_children():
-					#if item is Item:
-						#item.get_node("Name").text = maps[map.get_index()][item.get_index()]
 	maps.clear()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_end"):
-		save_maps()
-	if event.is_action_pressed("ui_home"):
-		load_maps()
-		
