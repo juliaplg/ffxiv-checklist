@@ -14,13 +14,12 @@ config/name="FFXIV Checklist"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://resources/mugo.png"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=1170
-window/size/resizable=false
 window/handheld/orientation=5
 
 [global_group]

@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://qi5tqvg47seb"]
+[gd_scene load_steps=5 format=3 uid="uid://qi5tqvg47seb"]
 
 [ext_resource type="PackedScene" uid="uid://c5nb87tcu04h2" path="res://scenes/prefabs/region.tscn" id="1_gvicn"]
 [ext_resource type="Script" path="res://scenes/save.gd" id="1_mmt5h"]
+
+[sub_resource type="GDScript" id="GDScript_0jfrv"]
+script/source = "extends Button
+func _pressed() -> void:
+	var cancel_event = InputEventAction.new()
+	cancel_event.action = \"ui_end\"
+	cancel_event.pressed = true
+	Input.parse_input_event(cancel_event)
+"
+
+[sub_resource type="GDScript" id="GDScript_2r8hn"]
+script/source = "extends Button
+func _pressed() -> void:
+	var cancel_event = InputEventAction.new()
+	cancel_event.action = \"ui_home\"
+	cancel_event.pressed = true
+	Input.parse_input_event(cancel_event)
+"
 
 [node name="Node" type="Node"]
 script = ExtResource("1_mmt5h")
@@ -26,3 +44,24 @@ layout_mode = 2
 
 [node name="Other" parent="CanvasLayer/Regions" instance=ExtResource("1_gvicn")]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SaveButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE"
+script = SubResource("GDScript_0jfrv")
+
+[node name="LoadButton" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LOAD"
+script = SubResource("GDScript_2r8hn")
