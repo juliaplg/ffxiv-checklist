@@ -1,10 +1,12 @@
 @tool
 extends VBoxContainer
+class_name Region
+
 var map_scene:PackedScene = preload("res://scenes/prefabs/map.tscn")
 var map_nodes
 var maps:Dictionary
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Label.text = name
 
 func _on_close_button_pressed() -> void:
@@ -25,7 +27,7 @@ func clear_maps():
 
 func load_maps():
 	clear_maps()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.1).timeout
 	for k in maps:
 		$Maps.add_child(map_scene.instantiate())
 	for map in $Maps.get_children():

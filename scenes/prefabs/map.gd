@@ -23,7 +23,7 @@ func clear_items():
 
 func set_items():
 	clear_items()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.1).timeout
 	for i in items:
 		$Items.add_child(item_scene.instantiate())
 	for i in $Items.get_children():

@@ -2,26 +2,48 @@ extends Node
 
 var dict:Dictionary
 
-var map_nodes
+const SAVE_GAME_PATH:String = "user://save.tres"
 
 func save_game():
-	map_nodes = get_tree().get_nodes_in_group("map")
-	for node in map_nodes:
-		if node is Map:
-			node.get_items()
-			dict.get_or_add(node.get_node("MapName").text,node.items)
+	for i in $CanvasLayer/Regions.get_children():
+		if i is Region:
+			i.save_maps()
+			dict.get_or_add(i.name, i.maps)
+			dict[i.name] = i.maps
+			var save = SaveGame.new()
+			save.dict = dict
+			ResourceSaver.save(save,SAVE_GAME_PATH)
+
 
 func load_game():
-	map_nodes = get_tree().get_nodes_in_group("map")
-	for node in map_nodes:
-		if node is Map:
-			node.clear_items()
-			dict.get_or_add(node.get_node("MapName").text,node.items)
+	if ResourceLoader.exists(SAVE_GAME_PATH):
+		dict = ResourceLoader.load(SAVE_GAME_PATH).dict
+	for i in $CanvasLayer/Regions.get_children():
+		if i is Region:
+			i.load_maps()
+			if dict.has(i.name):
+				i.maps = dict[i.name]
+				
+
+func clear():
+	dict.clear()
+	if ResourceLoader.exists(SAVE_GAME_PATH):
+		ResourceLoader.load(SAVE_GAME_PATH).dict.clear()
+	var save = SaveGame.new()
+	ResourceSaver.save(save,SAVE_GAME_PATH)
+
+
+func _ready() -> void:
+	load_game()
+	pass
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_end"):
+	#save_game()
+	if event.is_action_pressed("save"):
 		save_game()
-	if event.is_action_pressed("ui_home"):
-		
-		
+	if event.is_action_pressed("load"):
+		load_game()
+	if event.is_action_pressed("ui_up"):
 		print(dict)
+	if event.is_action_pressed("clear"):
+		clear()
